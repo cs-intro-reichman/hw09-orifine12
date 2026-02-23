@@ -24,7 +24,7 @@ public class List {
 
     /** Returns the CharData of the first element in this list. */
     public CharData getFirst() {
-        if (first == null) return null;   // safe; avoids NullPointerException
+        if (first == null) return null;
         return first.cp;
     }
 
@@ -37,22 +37,21 @@ public class List {
     }
     
     /** GIVE Textual representation of this list. */
-  
-   public String toString() {
-    String s = "(";
-    Node curr = first;
+    public String toString() {
+        String s = "(";
+        Node curr = first;
 
-    while (curr != null) {
-        s += curr;
-        if (curr.next != null) {
-            s += " ";
+        while (curr != null) {
+            s += curr;
+            if (curr.next != null) {
+                s += " ";
+            }
+            curr = curr.next;
         }
-        curr = curr.next;
-    }
 
-    s += ")";
-    return s;
-}
+        s += ")";
+        return s;
+    }
 
     /** Returns the index of the first CharData object in this list
      *  that has the same chr value as the given char,
@@ -86,7 +85,6 @@ public class List {
             current = current.next;
         }
 
-        // not found
         addFirst(chr);
     }
 
@@ -96,14 +94,12 @@ public class List {
     public boolean remove(char chr) {
         if (first == null) return false;
 
-        // removing first node
         if (first.cp.chr == chr) {
             first = first.next;
             size--;
             return true;
         }
 
-        // removing non-first node
         Node current = first;
         while (current.next != null) {
             if (current.next.cp.chr == chr) {
@@ -149,16 +145,13 @@ public class List {
 
     /** Returns an iterator over the elements in this list, starting at the given index. */
     public ListIterator listIterator(int index) {
-	    // If the list is empty, there is nothing to iterate   
 	    if (size == 0) return null;
-	    // Gets the element in position index of this list
 	    Node current = first;
 	    int i = 0;
         while (i < index) {
             current = current.next;
             i++;
         }
-        // Returns an iterator that starts in that element
 	    return new ListIterator(current);
     }
 }
