@@ -129,6 +129,8 @@ public class LanguageModel {
      * @param textLength - the desired total length of generated text
      * @return the generated text
      */
+
+    
     public String generate(String initialText, int textLength) {
         if (initialText == null) return "";
         if (initialText.length() < windowLength) return initialText;

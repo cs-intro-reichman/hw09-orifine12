@@ -37,17 +37,22 @@ public class List {
     }
     
     /** GIVE Textual representation of this list. */
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("(");
-        Node current = first;
-        while (current != null) {
-            sb.append(current);   // Node.toString() -> CharData.toString()
-            current = current.next;
+  
+   public String toString() {
+    String s = "(";
+    Node curr = first;
+
+    while (curr != null) {
+        s += curr;
+        if (curr.next != null) {
+            s += " ";
         }
-        sb.append(")");
-        return sb.toString();
+        curr = curr.next;
     }
+
+    s += ")";
+    return s;
+}
 
     /** Returns the index of the first CharData object in this list
      *  that has the same chr value as the given char,
