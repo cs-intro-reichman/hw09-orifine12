@@ -104,7 +104,7 @@ public class LanguageModel {
             return ' ';
         }
 
-        double r = randomGenerator.nextDouble(); // IMPORTANT: use seeded generator
+        double r = randomGenerator.nextDouble(); 
         ListIterator it = probs.listIterator(0);
 
         char lastChar = ' ';
@@ -112,13 +112,13 @@ public class LanguageModel {
             CharData cd = it.next();
             lastChar = cd.chr;
 
-            // spec says: stop at first element with cp > r
+           
             if (cd.cp > r) {
                 return cd.chr;
             }
         }
 
-        // Fallback (rounding edge case)
+
         return lastChar;
     }
 
@@ -136,7 +136,7 @@ public String generate(String initialText, int textLength) {
     if (textLength <= 0) return initialText;
 
     String text = initialText;
-    int finalLen = initialText.length() + textLength;
+    int finalLen = initialText.length() + textLength; // IMPORTANT
 
     while (text.length() < finalLen) {
         String window = text.substring(text.length() - windowLength);
